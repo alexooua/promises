@@ -6,12 +6,46 @@
 
 </head>
 <body>
-<script src="doAfter.js"></script>
-<script src="axios.js"></script>
-<script src="api-15.js"></script>
+<!--<script src="doAfter.js"></script>-->
+<!--<script src="axios.js"></script>-->
+<!--<script src="api-15.js"></script>-->
 
 <script>
- //   промис обещает выполнить.
+    let promise = new Promise((resolve, reject) => {
+// Функция переданная в new Promise должна вызвать что-то одно: resolve или reject. Состояние промиса может быть изменено только один раз. Все последующие вызовы resolve и reject будут проигнорированы
+        resolve(1);
+        // reject();
+    });
+
+    promise
+        .then((message) => {
+            // этот колбэк вызовется когда промис завершится успешно (promise будет в        состоянии Resolved)
+            console.log('success: ', message)
+        })
+        .catch((err) => {
+            // этот колбэк выполнится когда промис завершится ошибкой (promise будет в состоянии Rejected)
+            console.log('err: ', err)
+        })
+        .finally(() => {
+            // этот колюбэк выполнится когда промис завершится: успешно или с ошибкой.
+            console.log('Промис завершён. Остановить индикатор загрузки')
+        })
+    // 1111111111111111111
+// внутрь Promise передаем колбэк-функцию, которая собственно и есть та логика, которую промис обещает выполнить.
+let myPromise = new Promise((resolve) => {
+    alert('Hello');
+    resolve(1)
+});
+// let a=()=>myPromise
+
+// ниже по коду мы можем подписаться, на промис, чтобы он (промис) вызвал нашу функцию, когда он (промис) зарезолвится. Для этого передаём в метод then колбэк-функцию)
+myPromise
+    .then(( ) => {
+    console.log("myPromise зарезолвился, и я узнал об этом")
+    .catch(err=>console.log(err));
+})
+console.log(myPromise)
+
 
 
 //промисификация
@@ -29,21 +63,21 @@
 //  doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
 //  doAfter(10).then( () => console.log('я сработал через 10 секунд') );
 //  let promise3 = doAfter(1);
+// //
+//  let pr = new Promise( (resolve) => {
+//      let data = {
+//          cities: [{title: "Minsk"}, {title: "Kiev"}],
+//          website: "it-kamasutra.com"
+//      };
+//      resolve(data);
+//  });
 //
- let pr = new Promise( (resolve) => {
-     let data = {
-         cities: [{title: "Minsk"}, {title: "Kiev"}],
-         website: "it-kamasutra.com"
-     };
-     resolve(data);
- });
-
- pr.then( data => {
-     console.log(data);
- })
-     .then( website => {
-         console.log(website);
-     })
+//  pr.then( data => {
+//      console.log(data);
+//  })
+//      .then( website => {
+//          console.log(website);
+//      })
 </script>
 </body>
 </html>
