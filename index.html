@@ -1,0 +1,50 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<script src="doAfter.js"></script>
+<script src="axios.js"></script>
+<script src="api-15.js"></script>
+
+<script>
+ //   промис обещает выполнить.
+
+
+//промисификация
+//  const doAfter=(s)=>{
+//      let myPromise = new Promise((resolve,reject) => {
+//          setTimeout(() => {
+//              const randomV = Math.random()
+//              resolve(randomV)
+//          }, s*1000)
+//      })
+//      return myPromise
+//  }
+//     // ниже по коду мы можем подписаться, на промис, чтобы он (промис) вызвал нашу функцию, когда он (промис) зарезолвится. Для этого передаём в метод then колбэк-функцию)
+//  doAfter(5).then( () => console.log('я сработал через 5 секунд') );
+//  doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
+//  doAfter(10).then( () => console.log('я сработал через 10 секунд') );
+//  let promise3 = doAfter(1);
+//
+//  promise3.then( () => console.log('и я тоже следом сработал через 3 секунд') );
+ let pr = new Promise( (resolve) => {
+     let data = {
+         cities: [{title: "Minsk"}, {title: "Kiev"}],
+         website: "it-kamasutra.com"
+     };
+     resolve(data);
+ });
+
+ pr.then( data => {
+     console.log(data);
+ })
+     .then( website => {
+         console.log(website);
+     })
+</script>
+</body>
+</html>
